@@ -18,7 +18,7 @@ IGS Fresher Hackathon - Challenge #14
 
 ## Current SDLC Stage
 
-Requirement Analysis
+Planning
 
 ## Objective
 
@@ -48,4 +48,4 @@ commits documenting each stage and major change.
 
 ## Status
 
-Requirement analysis in progress.
+Project planning in progress.
