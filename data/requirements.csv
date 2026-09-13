@@ -1,0 +1,11 @@
+requirement_id,description,priority
+R001,User should be able to log in with valid credentials,High
+R002,System should reject invalid credentials,High
+R003,User should be able to reset a forgotten password,High
+R004,System should validate the registered email address,Medium
+R005,User should be able to update their profile information,Medium
+R006,System should prevent unauthorized profile updates,High
+R007,User should be able to search for products,Medium
+R008,System should display accurate product details,Medium
+R009,User should be able to add an available product to the cart,High
+R010,System should prevent unavailable products from being added to the cart,High

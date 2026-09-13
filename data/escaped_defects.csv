@@ -1,0 +1,8 @@
+defect_id,requirement_id,description,severity,escape_phase
+D001,R002,System accepts a login attempt when the username format is invalid,High,System Testing
+D002,R003,Password reset link remains usable after the configured expiration period,High,System Testing
+D003,R004,System accepts an email address with an invalid domain format,Medium,System Testing
+D004,R006,Unauthorized user can modify another users profile information,Critical,Security Testing
+D005,R007,Search does not return products when only part of the product name is entered,Medium,System Testing
+D006,R008,Product page displays an outdated product price after the price is updated,High,Integration Testing
+D007,R010,Unavailable product can be added to the cart after inventory reaches zero,High,Integration Testing
