@@ -151,8 +151,33 @@ with col4:
 
 st.subheader("Detailed Defect Analysis")
 
-st.dataframe(
-    results,
-    use_container_width=True,
-)
-    
+for _, result in results.iterrows():
+
+    defect_id = result["defect_id"]
+
+    with st.expander(
+        f"{defect_id} — {result['prevention_gap']}"
+    ):
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.markdown("**Requirement**")
+            st.write(result["requirement_description"])
+
+            st.markdown("**Coverage Status**")
+            st.write(result["coverage_status"])
+
+            st.markdown("**Prevention Gap**")
+            st.write(result["prevention_gap"])
+
+        with col2:
+            st.markdown("**Related Test Cases**")
+            st.write(
+                ", ".join(result["related_test_case_ids"])
+            )
+
+            st.markdown("**AI Explanation**")
+            st.write(result["ai_explanation"])
+
+            st.markdown("**Recommended Missing Test Area**")
+            st.write(result["missing_test_area"])    
