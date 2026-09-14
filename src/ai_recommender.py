@@ -68,16 +68,38 @@ Prevention Gap:
 Provide exactly two outputs:
 
 1. Explanation:
-Explain the likely reason this defect escaped based on
+Explain the likely reason this defect escaped based only on
 the available testing evidence.
 
 2. Missing Test Area:
-Suggest one specific test area that should be added
-to help prevent a similar defect in the future.
+Suggest one specific test area that should be added to help
+prevent a similar defect in the future.
 
-Do not change the coverage status.
-Do not change the prevention-gap category.
-Do not invent requirements or test results.
+Important rules:
+
+- Do not change the coverage status.
+- Do not change the prevention-gap category.
+- Do not invent requirements, test cases, test results, assertions,
+  system behavior, or implementation details.
+- If the evidence does not establish why the defect escaped,
+  describe the explanation as a likely hypothesis rather than
+  a confirmed fact.
+- Treat test-case descriptions as the complete evidence of what
+  was tested. Do not infer hidden assertions, test data, execution
+  steps, authentication state, concurrency, backend behavior,
+  implementation details, or specific validation rules unless they
+  are explicitly stated in the test-case description or defect.
+- When proposing a possible missing scenario, clearly frame it as
+  a recommendation rather than claiming that the scenario was
+  definitely absent from testing.
+- Base the explanation only on the provided defect, requirement,
+  related test cases, coverage status, and prevention gap.
+- Do not assume that a related test contains assertions or
+  validation steps that are not explicitly described.
+- Keep the recommendation specific to the escaped scenario.
+- Do not provide multiple alternative test areas.
+- Do not make definitive claims when the available evidence
+  is insufficient.
 """.strip()
 
 
