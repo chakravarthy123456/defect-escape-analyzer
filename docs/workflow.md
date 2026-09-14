@@ -297,3 +297,44 @@ rather than application failure.
 ## 15. Design Status
 
 Analysis workflow design is in progress.
+
+## Coverage Analysis Rules
+
+The coverage analysis determines whether an existing test case should have detected an escaped defect.
+
+The analysis uses the relationship between the escaped defect, its requirement, and the test cases linked to that requirement.
+
+### Coverage Status
+
+Each escaped defect is assigned one of the following coverage statuses:
+
+- **Covered** — An existing test case directly addresses the scenario described by the escaped defect.
+- **Partially Covered** — Existing test cases cover the related requirement or a similar scenario, but do not directly address the escaped defect scenario.
+- **Not Covered** — No existing test case meaningfully addresses the requirement or scenario associated with the escaped defect.
+
+### Analysis Approach
+
+The initial implementation uses deterministic rule-based analysis:
+
+1. Identify the requirement associated with the escaped defect.
+2. Find all test cases linked to that requirement.
+3. Compare the escaped defect description with the available test case descriptions.
+4. Determine whether the specific defect scenario appears to be tested.
+5. Assign the appropriate coverage status.
+6. Preserve the related test case IDs as evidence for the analysis.
+
+The coverage decision is produced by the application logic and does not depend on AI.
+
+AI is reserved for the later prevention-gap explanation and missing-test recommendation, as defined in the system architecture.
+
+### Coverage Classification Logic
+
+The analyzer uses the related test cases as evidence when classifying coverage.
+
+- **Covered** — The test case description directly represents the scenario described by the escaped defect.
+- **Partially Covered** — Test cases exist for the requirement, but the specific escaped scenario is not directly represented.
+- **Not Covered** — No test cases exist for the requirement associated with the escaped defect.
+
+The classification is deterministic and based on the available requirement and test-case evidence.
+
+The initial implementation uses keyword and scenario matching rather than an AI-generated decision. This keeps the core coverage result reproducible and explainable.
