@@ -122,24 +122,28 @@ implementation and testing.
 
 ---
 
-### 3.6 AI Recommendation Component
+### AI Recommendation
 
-The AI component will have a deliberately limited responsibility.
+The AI component is intentionally limited to one task defined by the challenge:
 
-It will:
+1. Explain the likely prevention gap for an escaped defect.
+2. Suggest a missing test area based on the available evidence.
 
-- Explain the likely prevention gap.
-- Suggest a missing test area.
+The AI does not perform requirement mapping, test coverage classification, or prevention-gap classification.
 
-The AI component will not be responsible for:
+Those decisions are handled by deterministic application logic so that the core analysis remains reproducible and explainable.
 
-- Performing the primary defect-to-requirement mapping.
-- Calculating test coverage.
-- Replacing deterministic validation logic.
-- Making unsupported claims about the input data.
+The AI input contains only relevant analysis evidence:
 
-AI output will be treated as advisory.
+- Escaped defect description
+- Requirement description
+- Related test cases
+- Coverage status
+- Prevention-gap category
 
+The AI output is treated as a recommendation rather than a definitive QA decision.
+
+If the AI service is unavailable, the deterministic analysis results remain available to the user.
 ---
 
 ### 3.7 Results and Reporting Layer
