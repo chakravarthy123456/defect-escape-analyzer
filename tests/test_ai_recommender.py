@@ -1,8 +1,8 @@
 from src.ai_recommender import (
+    Recommendation,
     RecommendationInput,
     build_recommendation_prompt,
 )
-
 
 def test_recommendation_input_stores_analysis_evidence():
     evidence = RecommendationInput(
@@ -58,3 +58,12 @@ def test_prompt_restricts_ai_to_recommendation_task():
     assert "Missing Test Area:" in prompt
     assert "Do not change the coverage status." in prompt
     assert "Do not change the prevention-gap category." in prompt
+
+def test_recommendation_has_required_fields():
+    recommendation = Recommendation(
+        explanation="The defect escaped because the scenario was not sufficiently tested.",
+        missing_test_area="Add a dedicated negative test for invalid username formats.",
+    )
+
+    assert recommendation.explanation
+    assert recommendation.missing_test_area
