@@ -338,3 +338,37 @@ The analyzer uses the related test cases as evidence when classifying coverage.
 The classification is deterministic and based on the available requirement and test-case evidence.
 
 The initial implementation uses keyword and scenario matching rather than an AI-generated decision. This keeps the core coverage result reproducible and explainable.
+
+## Prevention Gap Classification Rules
+
+The prevention gap represents the most likely primary reason an escaped defect was not prevented by the existing testing approach, based on the available evidence.
+
+When a defect has direct test coverage but still escaped, the analyzer may classify it as a Process Gap as an evidence-based inference. This does not prove that the testing process failed; additional execution, review, or defect-history evidence would be required to confirm the cause.
+
+The classification is based on evidence from the requirement, escaped defect, escape phase, related test cases, and coverage analysis.
+
+### Prevention Gap Categories
+
+- **Requirement Gap** — The requirement does not clearly define the expected behavior needed to prevent the defect.
+- **Test Coverage Gap** — The requirement is defined and related testing exists, but the specific defect scenario is not adequately covered.
+- **Negative Testing Gap** — The escaped defect involves invalid, unexpected, or unauthorized input or behavior that was not adequately tested.
+- **Boundary Testing Gap** — The defect occurs at a limit, threshold, expiration point, zero value, or other boundary condition that was not adequately tested.
+- **Data Validation Gap** — The defect involves incorrect, malformed, or insufficiently validated data.
+- **Integration Gap** — The defect occurs because behavior across multiple system components or states was not adequately tested.
+- **Process Gap** — The available requirement and test evidence appears sufficient, but the defect still escaped, suggesting a weakness in the testing or review process.
+
+### Classification Priority
+
+When multiple categories could apply, the analyzer uses the following priority:
+
+1. Integration Gap
+2. Boundary Testing Gap
+3. Data Validation Gap
+4. Negative Testing Gap
+5. Test Coverage Gap
+6. Requirement Gap
+7. Process Gap
+
+Process Gap is used as a fallback when the escaped scenario has direct test coverage but no more specific prevention-gap evidence is available.
+
+The prevention-gap classification is deterministic and does not use AI. AI is reserved for explaining the likely prevention gap and suggesting a missing test area.
