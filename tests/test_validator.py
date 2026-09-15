@@ -100,6 +100,49 @@ def test_unknown_reference_ids():
 
     assert unknown_ids == ["R999"]
 
+
+def test_unknown_test_case_requirement_id():
+    """Verify that an invalid test-case requirement reference is detected."""
+
+    test_cases = pd.DataFrame(
+        {
+            "test_case_id": ["TC001"],
+            "requirement_id": ["R999"],
+        }
+    )
+
+    valid_requirement_ids = {"R001", "R002"}
+
+    unknown_ids = validate_reference_ids(
+        test_cases,
+        "requirement_id",
+        valid_requirement_ids,
+    )
+
+    assert unknown_ids == ["R999"]
+
+
+def test_unknown_defect_requirement_id():
+    """Verify that an invalid escaped-defect requirement reference is detected."""
+
+    escaped_defects = pd.DataFrame(
+        {
+            "defect_id": ["D999"],
+            "requirement_id": ["R999"],
+        }
+    )
+
+    valid_requirement_ids = {"R001", "R002"}
+
+    unknown_ids = validate_reference_ids(
+        escaped_defects,
+        "requirement_id",
+        valid_requirement_ids,
+    )
+
+    assert unknown_ids == ["R999"]
+
+
 def test_project_sample_data():
     requirements = pd.read_csv("data/requirements.csv")
     test_cases = pd.read_csv("data/test_cases.csv")

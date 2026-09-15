@@ -6,10 +6,12 @@ AI-assisted recommendation step of the Defect Escape Analyzer.
 """
 import json
 import os
+
 from dataclasses import dataclass
 
 from openai import OpenAI
-
+from dotenv import load_dotenv
+load_dotenv()
 
 @dataclass
 class RecommendationInput:
