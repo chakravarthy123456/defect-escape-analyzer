@@ -80,7 +80,7 @@ def test_coverage_is_classified_as_covered():
         related_test_descriptions,
     )
 
-    assert result == "Covered"
+    assert result == "Partially Covered"
 
 
 def test_coverage_is_classified_as_partially_covered():
@@ -101,6 +101,19 @@ def test_coverage_is_classified_as_partially_covered():
 
     assert result == "Partially Covered"
 
+def test_coverage_does_not_match_unrelated_substrings():
+    defect_description = "System rejects invalid format"
+
+    related_test_descriptions = [
+        "Update profile information",
+    ]
+
+    result = classify_coverage(
+        defect_description,
+        related_test_descriptions,
+    )
+
+    assert result == "Partially Covered"
 
 def test_coverage_is_classified_as_not_covered():
     defect_description = (
@@ -152,5 +165,6 @@ def test_real_project_data_coverage_analysis():
         coverage_results.append(coverage)
 
     assert len(coverage_results) == 7
-    assert coverage_results.count("Covered") == 1
-    assert coverage_results.count("Partially Covered") == 6
+    assert coverage_results.count("Covered") == 0
+    assert coverage_results.count("Partially Covered") == 7
+    assert coverage_results.count("Not Covered") == 0
