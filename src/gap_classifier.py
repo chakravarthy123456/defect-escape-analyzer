@@ -6,7 +6,7 @@ escaped defects using deterministic rules.
 """
 
 #import pandas as pd
-
+from src.text_matching import contains_term
 
 GAP_CATEGORIES = [
     "Boundary Testing Gap",
@@ -14,11 +14,8 @@ GAP_CATEGORIES = [
     "Negative Testing Gap",
     "Data Validation Gap",
     "Test Coverage Gap",
-    "Requirement Gap",
     "Process Gap",
 ]
-
-
 def classify_prevention_gap(
     defect_description: str,
     escape_phase: str,
@@ -68,20 +65,27 @@ def classify_prevention_gap(
 ]
 
     if (
-        "integration" in phase_text
-        or any(term in defect_text for term in integration_terms)
+        contains_term(phase_text, "integration")
+        or any(contains_term(defect_text, term) for term in integration_terms)
     ):
         return "Integration Gap"
 
-    if "zero" in defect_text or any(
-        term in defect_text for term in boundary_terms
+    if contains_term(defect_text, "zero") or any(
+        contains_term(defect_text, term)
+        for term in boundary_terms
     ):
         return "Boundary Testing Gap"
 
-    if any(term in defect_text for term in data_validation_terms):
+    if any(
+        contains_term(defect_text, term)
+        for term in data_validation_terms
+    ):
         return "Data Validation Gap"
 
-    if any(term in defect_text for term in negative_terms):
+    if any(
+        contains_term(defect_text, term)
+        for term in negative_terms
+    ):
         return "Negative Testing Gap"
 
     if coverage_status == "Partially Covered":

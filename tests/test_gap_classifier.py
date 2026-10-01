@@ -110,3 +110,13 @@ def test_real_project_defects_have_expected_gap_categories():
     }
 
     assert actual_gaps == expected_gaps
+
+
+def test_boundary_term_does_not_match_unrelated_substring():
+    result = classify_prevention_gap(
+        "The system shows unlimited access",
+        "System Testing",
+        "Covered",
+    )
+
+    assert result == "Process Gap"
