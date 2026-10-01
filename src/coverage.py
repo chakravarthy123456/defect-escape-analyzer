@@ -6,6 +6,7 @@ requirements linked to escaped defects.
 """
 
 import pandas as pd
+from src.text_matching import contains_term
 
 
 def find_related_test_cases(
@@ -79,13 +80,15 @@ def classify_coverage(
     defect_scenarios = {
         word
         for word in scenario_indicators
-        if word in defect_text
-    }
+        if contains_term(defect_description, word)
+        }
+    if not defect_scenarios:
+        return "Partially Covered"
 
     uncovered_scenarios = {
         word
         for word in defect_scenarios
-        if word not in test_text
+        if not contains_term(test_text, word)
     }
 
     if uncovered_scenarios:

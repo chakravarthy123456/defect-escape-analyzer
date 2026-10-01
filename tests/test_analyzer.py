@@ -80,7 +80,7 @@ def test_analyze_defect_escapes_preserves_deterministic_results():
         "D002": ("Partially Covered", "Boundary Testing Gap"),
         "D003": ("Partially Covered", "Data Validation Gap"),
         "D004": ("Partially Covered", "Negative Testing Gap"),
-        "D005": ("Covered", "Process Gap"),
+        "D005": ("Partially Covered", "Test Coverage Gap"),
         "D006": ("Partially Covered", "Integration Gap"),
         "D007": ("Partially Covered", "Integration Gap"),
     }
