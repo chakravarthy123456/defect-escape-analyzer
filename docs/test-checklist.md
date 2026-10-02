@@ -52,8 +52,8 @@ The expected coverage distribution for the sample dataset is:
 
 | Coverage Status | Count |
 |---|---:|
-| Covered | 1 |
-| Partially Covered | 6 |
+| Covered | 0 |
+| Partially Covered | 7 |
 | Not Covered | 0 |
 
 The final application produced the expected distribution.
@@ -70,7 +70,7 @@ The sample analysis produced the following prevention-gap classifications:
 | D002 | Boundary Testing Gap |
 | D003 | Data Validation Gap |
 | D004 | Negative Testing Gap |
-| D005 | Process Gap |
+| D005 | Test Coverage Gap |
 | D006 | Integration Gap |
 | D007 | Integration Gap |
 
@@ -104,7 +104,7 @@ Automated tests were implemented using Pytest.
 The final test suite result was:
 
 ```text
-30 passed
+33 passed
 ```
 
 The tests cover areas including:
@@ -161,7 +161,7 @@ The final valid workflow completed successfully.
 
 The following checks were performed before finalizing the prototype:
 
-- Automated tests passed: 30/30
+- Automated tests passed: 33/33
 - Git working tree verified clean
 - `git diff --check` verified no whitespace errors
 - Required runtime dependency `python-dotenv` included in `requirements.txt`

@@ -157,11 +157,11 @@ Activities:
 - Define Git strategy.
 - Define testing approach.
 
-Status: In Progress
+Status: Completed
 
 Artifact:
 
-- `docs/project-plan.md`
+- `docs/development-plan.md`
 
 ---
 
@@ -183,6 +183,7 @@ Expected artifacts:
 - Data model documentation
 - Workflow documentation
 
+Status: Completed
 ---
 
 ### Milestone 4 — Incremental Development

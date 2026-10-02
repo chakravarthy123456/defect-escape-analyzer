@@ -160,7 +160,8 @@ The following were intentionally kept outside the prototype scope:
 - Authentication and authorization
 - REST API layer
 - Enterprise-scale infrastructure
-- CI/CD infrastructure
+- Production CI/CD deployment infrastructure
+- GitHub Actions CI for automated test execution is implemented
 - Production monitoring
 - Kubernetes or microservice architecture
 
