@@ -26,6 +26,9 @@ st.set_page_config(
     layout="wide",
 )
 
+if "analysis_results" not in st.session_state:
+    st.session_state.analysis_results = None
+
 
 # -------------------------------------------------------------------
 # Application title
@@ -285,11 +288,17 @@ if st.button("Run Analysis", type="primary"):
             escaped_defects,
         )
 
+        st.session_state.analysis_results = analysis_results
+
     except Exception as error:
         st.error(
             f"Analysis failed: {error}"
         )
         st.stop()
+
+# Use the previously generated result after Streamlit reruns
+if st.session_state.analysis_results is not None:
+    analysis_results = st.session_state.analysis_results
 
     # ---------------------------------------------------------------
     # Prevention gap distribution
