@@ -86,6 +86,11 @@ Important rules:
 - If the evidence does not establish why the defect escaped,
   describe the explanation as a likely hypothesis rather than
   a confirmed fact.
+- Treat missing information as unknown, not as evidence that
+  something was absent. In particular, do not claim that a test
+  lacked assertions, test data, execution steps, validation checks,
+  or other testing details unless those details are explicitly
+  provided in the evidence.
 - Treat test-case descriptions as the complete evidence of what
   was tested. Do not infer hidden assertions, test data, execution
   steps, authentication state, concurrency, backend behavior,
