@@ -170,3 +170,20 @@ class GroqRecommendationProvider:
             explanation=result["explanation"],
             missing_test_area=result["missing_test_area"],
         )
+
+def build_fallback_recommendation(
+    recommendation_input: RecommendationInput,
+) -> Recommendation:
+    """Create a deterministic recommendation when AI is unavailable."""
+
+    return Recommendation(
+        explanation=(
+            f"The defect was classified as a "
+            f"{recommendation_input.prevention_gap} based on the "
+            f"available testing evidence."
+        ),
+        missing_test_area=(
+            f"Add targeted testing for the escaped scenario associated "
+            f"with the {recommendation_input.prevention_gap}."
+        ),
+    )
