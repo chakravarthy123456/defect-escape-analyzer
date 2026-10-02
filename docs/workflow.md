@@ -115,12 +115,7 @@ defect into a prevention-gap category.
 
 The classification will be based on deterministic analysis rules.
 
-The initial prevention-gap categories will include:
-
-### Requirement Gap
-
-The requirement does not provide sufficient information to derive an
-appropriate test.
+The prevention-gap categories are:
 
 ### Test Coverage Gap
 
@@ -296,7 +291,7 @@ rather than application failure.
 
 ## 15. Design Status
 
-Analysis workflow design is in progress.
+Analysis workflow design is finalized.
 
 ## Coverage Analysis Rules
 
@@ -349,7 +344,6 @@ The classification is based on evidence from the requirement, escaped defect, es
 
 ### Prevention Gap Categories
 
-- **Requirement Gap** — The requirement does not clearly define the expected behavior needed to prevent the defect.
 - **Test Coverage Gap** — The requirement is defined and related testing exists, but the specific defect scenario is not adequately covered.
 - **Negative Testing Gap** — The escaped defect involves invalid, unexpected, or unauthorized input or behavior that was not adequately tested.
 - **Boundary Testing Gap** — The defect occurs at a limit, threshold, expiration point, zero value, or other boundary condition that was not adequately tested.
@@ -366,8 +360,7 @@ When multiple categories could apply, the analyzer uses the following priority:
 3. Data Validation Gap
 4. Negative Testing Gap
 5. Test Coverage Gap
-6. Requirement Gap
-7. Process Gap
+6. Process Gap
 
 Process Gap is used as a fallback when the escaped scenario has direct test coverage but no more specific prevention-gap evidence is available.
 

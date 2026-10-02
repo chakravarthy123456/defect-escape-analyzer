@@ -111,8 +111,8 @@ The system shall assign a prevention-gap category to each analyzed defect.
 
 ### FR-07: Recommendation
 
-The system shall recommend additional tests or process improvements based
-on the identified gap.
+The system shall recommend a missing test area based on the
+identified prevention gap and available evidence.
 
 ### FR-08: AI-Assisted Analysis
 
@@ -258,4 +258,4 @@ defects will be designed and refined during the system-design stage.
 
 **SDLC Stage:** Requirement Analysis
 
-**Next Stage:** Planning
+**Next Stage:** Finalized

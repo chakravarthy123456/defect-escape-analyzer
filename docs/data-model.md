@@ -170,4 +170,4 @@ should remain clear and traceable.
 
 ## 9. Design Status
 
-Data model design is in progress.
+Data model design is finalized.
