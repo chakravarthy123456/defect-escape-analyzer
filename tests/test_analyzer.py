@@ -114,3 +114,24 @@ def test_analyze_defect_escapes_includes_ai_results():
 
     assert results["ai_explanation"].notna().all()
     assert results["missing_test_area"].notna().all()
+
+
+
+def test_analyze_defect_escapes_uses_fallback_when_ai_fails():
+    """Verify analysis continues when the AI provider fails."""
+
+    requirements, test_cases, escaped_defects = load_test_data()
+
+    with patch(
+        "src.analyzer.GroqRecommendationProvider.generate_recommendation",
+        side_effect=RuntimeError("AI service unavailable"),
+    ):
+        results = analyze_defect_escapes(
+            requirements,
+            test_cases,
+            escaped_defects,
+        )
+
+    assert len(results) == 7
+    assert results["ai_explanation"].notna().all()
+    assert results["missing_test_area"].notna().all()

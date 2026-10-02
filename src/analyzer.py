@@ -13,6 +13,7 @@ from src.mapper import map_defects_to_requirements
 from src.ai_recommender import (
     GroqRecommendationProvider,
     RecommendationInput,
+    build_fallback_recommendation,
 )
 
 
@@ -51,6 +52,12 @@ def analyze_defect_escapes(
     )
 
     analysis_results = []
+
+    # Initialize the AI provider once for the complete analysis run.
+    try:
+        provider = GroqRecommendationProvider()
+    except Exception:
+        provider = None
 
     # Step 3: Analyze each escaped defect
     for _, defect in mapped_defects.iterrows():
@@ -92,11 +99,19 @@ def analyze_defect_escapes(
         )
 
         # Step 7: Generate AI explanation and recommendation
-        provider = GroqRecommendationProvider()
-
-        recommendation = provider.generate_recommendation(
-            recommendation_input
-        )
+        if provider is None:
+            recommendation = build_fallback_recommendation(
+                recommendation_input
+            )
+        else:
+            try:
+                recommendation = provider.generate_recommendation(
+                    recommendation_input
+                )
+            except Exception:
+                recommendation = build_fallback_recommendation(
+                    recommendation_input
+                )
 
         # Step 8: Store the complete analysis result
         analysis_results.append(
